@@ -81,7 +81,28 @@ module.exports = /******/ (function(modules) {
       /***/
     },
     /* 1 */
+    /***/ function(module, __webpack_exports__, __webpack_require__) {
+      'use strict';
+      Object.defineProperty(__webpack_exports__, '__esModule', { value: true });
+      /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express__ = __webpack_require__(
+        2
+      );
+      /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express___default = __webpack_require__.n(
+        __WEBPACK_IMPORTED_MODULE_0_express__
+      );
+
+      const app = __WEBPACK_IMPORTED_MODULE_0_express___default()();
+
+      app.listen(process.env.port || 3002, () => {
+        console.log('Listening to port 3002');
+      });
+
+      /***/
+    },
+    /* 2 */
     /***/ function(module, exports) {
+      module.exports = require('express');
+
       /***/
     }
     /******/
