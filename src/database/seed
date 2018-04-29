@@ -1,0 +1,50 @@
+use moodal;
+
+db.classes.drop();
+db.comments.drop();
+db.messages.drop();
+db.posts.drop();
+db.users.drop();
+
+db.classes.insertMany([
+    {
+        title: 'CMSC 128',
+        section: 'A-8L',
+        posts: [
+
+        ],
+        students: [
+
+        ]
+    },
+    {
+        title: 'CMSC 132',
+        section: 'ST-4L',
+        posts: [
+
+        ],
+        students: [
+            
+        ]
+    },
+    {
+        title: 'CMSC 170',
+        section: 'U-9L',
+        posts: [
+
+        ],
+        students: [
+            
+        ]
+    },
+    {
+        title: 'CMSC 100',
+        section: 'UV-1L',
+        posts: [
+
+        ],
+        students: [
+            
+        ]
+    }
+]);

@@ -1,10 +1,20 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import logger from 'morgan';
+import mongoose from 'mongoose';
 
 import router from './router';
 
 const app = express();
+
+const db = 'moodal';
+
+mongoose.connect(`mongodb://localhost/${db}`, err => {
+  if (err) console.log('Error connecting to the database!');
+  else console.log('Successfully connected to the database!');
+});
+
+mongoose.Promise = global.Promise;
 
 // Middlewares
 app.use(bodyParser.json());
