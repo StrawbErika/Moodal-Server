@@ -196,6 +196,13 @@ db.messages.insertMany([
 
 db.posts.insertMany([
     {
+        author: 'Joma Urbano',
+        content: "super pogi ko hehehehehe",
+        timestamp: "01:30pm",
+        comments: [],
+        classId: "CMSC 100"
+    },
+    {
         author: 'Kobe De Luna',
         content: "super pogi ni Joma hehehehehe",
         timestamp: "01:30pm",
