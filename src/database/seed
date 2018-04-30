@@ -10,49 +10,72 @@ db.classes.insertMany([
     {
         title: 'CMSC 128',
         section: 'A-8L',
-        posts: [
-
-        ],
-        students: [
-
-        ],
+        posts: [],
+        students: [],
         canComment: true,
         canPost: false
     },
     {
         title: 'CMSC 132',
         section: 'ST-4L',
-        posts: [
-
-        ],
-        students: [
-            
-        ],
+        posts: [],
+        students: [],
         canComment: true,
         canPost: false
     },
     {
         title: 'CMSC 170',
         section: 'U-9L',
-        posts: [
-
-        ],
-        students: [
-            
-        ],
+        posts: [],
+        students: [],
         canComment: true,
         canPost: false
     },
     {
         title: 'CMSC 100',
         section: 'UV-1L',
-        posts: [
-
-        ],
-        students: [
-            
-        ],
+        posts: [],
+        students: [],
         canComment: true,
         canPost: false
+    }
+]);
+
+db.users.insertMany([
+    {
+        email: 'mcarandang@up.edu.ph',
+        name: 'Monina Carandang',
+        password: '123123',
+        userType: 'teacher',
+        classes: []
+    },
+    {
+        email: 'jomapogi@up.edu.ph',
+        name: 'Joma Urbano',
+        password: 'pogisijoma',
+        userType: 'student',
+        classes: []
+    },
+
+    {
+        email: 'kjdeluna@up.edu.ph',
+        name: 'Kobe De Luna',
+        password: 'pangetako',
+        userType: 'student',
+        classes: []
+    },
+    {
+        email: 'jcgaza@up.edu.ph',
+        name: 'Cedric Cerbo',
+        password: 'pangetako',
+        userType: 'student',
+        classes: []
+    },
+    {
+        email: 'elnepomuceno@up.edu.ph',
+        name: 'Erika Nepomuceno',
+        password: 'pangetako',
+        userType: 'student',
+        classes: []
     }
 ]);

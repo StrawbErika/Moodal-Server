@@ -3,20 +3,20 @@ import * as Ctrl from './controller';
 
 const router = Router();
 
-//Gets all class
-router.get('/api/class', async (req, res) => {
+//Gets all user
+router.get('/api/user', async (req, res) => {
   try {
-    const classes = await Ctrl.viewAllClass(req.body);
+    const users = await Ctrl.viewAllUser(req.body);
     res.status(200).json({
       status: 200,
-      message: 'Successfully fetched all classes',
-      data: classes
+      message: 'Successfully fetched all users',
+      data: users
     });
   } catch (status) {
     let message = '';
     switch (status) {
       case 404:
-        message = 'Class not found';
+        message = 'User not found';
         break;
       case 500:
         message = 'Internal server error';
@@ -26,20 +26,20 @@ router.get('/api/class', async (req, res) => {
   }
 });
 
-//Gets class by id
-router.get('/api/class/:_id', async (req, res) => {
+//Gets user by id
+router.get('/api/user/:_id', async (req, res) => {
   try {
-    const _class = await Ctrl.viewClassByID(req.params);
+    const users = await Ctrl.viewUserByID(req.params);
     res.status(200).json({
       status: 200,
-      message: 'Successfully fetched class',
-      data: _class
+      message: 'Successfully fetched user',
+      data: users
     });
   } catch (status) {
     let message = '';
     switch (status) {
       case 404:
-        message = 'Class not found';
+        message = 'User not found';
         break;
       case 500:
         message = 'Internal server error';
@@ -49,21 +49,20 @@ router.get('/api/class/:_id', async (req, res) => {
   }
 });
 
-//Adds a class
-router.post('/api/class', async (req, res) => {
+//Adds a user
+router.post('/api/user', async (req, res) => {
   if (
-    req.body.title &&
-    req.body.section &&
-    req.body.students &&
-    req.body.posts &&
-    req.body.canPost &&
-    req.body.canComment
+    req.body.email &&
+    req.body.name &&
+    req.body.password &&
+    req.body.userType &&
+    req.body.classes
   ) {
     try {
-      await Ctrl.createClass(req.body);
+      await Ctrl.createUser(req.body);
       res.status(200).json({
         status: 200,
-        message: 'Successfully created class'
+        message: 'Successfully created user'
       });
     } catch (status) {
       res.status(500).json({ status: 500, message: 'Internal server error' });
@@ -73,14 +72,14 @@ router.post('/api/class', async (req, res) => {
   }
 });
 
-//Deletes a class
-router.delete('/api/class/:_id', async (req, res) => {
+//Deletes a user
+router.delete('/api/user/:_id', async (req, res) => {
   if (req.params._id) {
     try {
-      await Ctrl.deleteClass(req.params);
+      await Ctrl.deleteUser(req.params);
       res.status(200).json({
         status: 200,
-        message: 'Successfully removed class'
+        message: 'Successfully removed user'
       });
     } catch (status) {
       res.status(500).json({ status: 500, message: 'Internal server error' });
@@ -90,22 +89,21 @@ router.delete('/api/class/:_id', async (req, res) => {
   }
 });
 
-//Edits/Updates a class
-router.put('/api/class/:_id', async (req, res) => {
+//Edits/Updates a user
+router.put('/api/user/:_id', async (req, res) => {
   if (
     req.params._id &&
-    req.body.title &&
-    req.body.section &&
-    req.body.students &&
-    req.body.posts &&
-    req.body.canComment &&
-    req.body.canPost
+    req.body.email &&
+    req.body.name &&
+    req.body.password &&
+    req.body.userType &&
+    req.body.classes
   ) {
     try {
-      await Ctrl.editClass(req.params, req.body);
+      await Ctrl.editUser(req.params, req.body);
       res.status(200).json({
         status: 200,
-        message: 'Successfully edited the class'
+        message: 'Successfully edited the user'
       });
     } catch (status) {
       res.status(500).json({ status: 500, message: 'Internal server error' });
