@@ -112,3 +112,84 @@ db.comments.insertMany([
         likeCount: -9999999
     }
 ]);
+
+db.messages.insertMany([
+    {
+        sender: 'Monina Carandang',
+        recipient: 'Joma Urbano',
+        content: "Galing ng Backend. Lalo ka na Joma. Good job!",
+        timestamp: "01:30pm"
+    },
+    {
+        sender: 'Monina Carandang',
+        recipient: 'Kobe De Luna',
+        content: "Galing ng Backend. Lalo ka na Kobe pero mas magaling si Joma hehehehehehe. Good job!",
+        timestamp: "01:30pm"
+    },
+    {
+        sender: 'Monina Carandang',
+        recipient: 'Cedric Gaza',
+        content: "Boooooo Frontend!",
+        timestamp: "01:30pm"
+    },
+    {
+        sender: 'Monina Carandang',
+        recipient: 'Erika Nepomuceno',
+        content: "Boooooo Frontend!",
+        timestamp: "01:30pm"
+    },
+    {
+        sender: 'Joma Urbano',
+        recipient: 'Kobe De Luna',
+        content: "pogi q hehehehehehehehe",
+        timestamp: "01:30pm"
+    },
+    {
+        sender: 'Joma Urbano',
+        recipient: 'Erika Nepomuceno',
+        content: "pogi q hehehehehehehehe",
+        timestamp: "01:30pm"
+    },
+    {
+        sender: 'Joma Urbano',
+        recipient: 'Cedric Gaza',
+        content: "pogi q hehehehehehehehe",
+        timestamp: "01:30pm"
+    },
+    {
+        sender: 'Joma Urbano',
+        recipient: 'Erika Nepomuceno',
+        content: "pogi q hehehehehehehehe",
+        timestamp: "01:30pm"
+    },
+    {
+        sender: 'Joma Urbano',
+        recipient: 'Monina Carandang',
+        content: "pogi q hehehehehehehehe",
+        timestamp: "01:30pm"
+    },
+    {
+        sender: 'Kobe De Luna',
+        recipient: 'Joma Urbano',
+        content: "pogi mo Joma, dabest",
+        timestamp: "01:30pm"
+    },
+    {
+        sender: 'Kobe De Luna',
+        recipient: 'Erika Nepomuceno',
+        content: "super pogi ni Joma hehehehehe",
+        timestamp: "01:30pm"
+    },
+    {
+        sender: 'Kobe De Luna',
+        recipient: 'Cedric Gaza',
+        content: "super pogi ni Joma hehehehehe",
+        timestamp: "01:30pm"
+    },
+    {
+        sender: 'Kobe De Luna',
+        recipient: 'Monina Carandang',
+        content: "super pogi ni Joma hehehehehe",
+        timestamp: "01:30pm"
+    }
+]);
