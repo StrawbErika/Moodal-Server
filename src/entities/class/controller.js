@@ -1,8 +1,32 @@
-import { Class } from '../../database';
+import { Class } from '../../database/Class';
+
+export const viewAllClass = () => {
+  return new Promise((resolve, reject) => {
+    Class.find((err, _classes) => {
+      if (err) {
+        console.log(err);
+        return reject(500);
+      }
+      return resolve(_classes);
+    });
+  });
+};
+
+export const viewClassByID = _id => {
+  return new Promise((resolve, reject) => {
+    Class.findById(_id, (err, _class) => {
+      if (err) {
+        console.log(err);
+        return reject(500);
+      }
+      return resolve(_class);
+    });
+  });
+};
 
 export const createClass = _class => {
   return new Promise((resolve, reject) => {
-    const newClass = new Class({ ..._class });
+    const newClass = new Class(_class);
 
     newClass.save((err, _class) => {
       if (err) {
@@ -27,7 +51,10 @@ export const deleteClass = _id => {
   });
 };
 
-export const editClass = (_id, { title, section, posts, students }) => {
+export const editClass = (
+  _id,
+  { title, section, posts, students, canPost, canComment }
+) => {
   return new Promise((resolve, reject) => {
     Class.findById(_id, (err, _class) => {
       if (err) {
@@ -37,11 +64,20 @@ export const editClass = (_id, { title, section, posts, students }) => {
       if (!_class) {
         return reject(404);
       }
-
       _class.title = title;
       _class.section = section;
       _class.posts = posts;
       _class.students = students;
+      _class.canPost = canPost;
+      _class.canComment = canComment;
+
+      _class.save((err, newClass) => {
+        if (err) {
+          console.log(err);
+          return reject(500);
+        }
+        return resolve(newClass);
+      });
     });
   });
 };
