@@ -79,3 +79,36 @@ db.users.insertMany([
         classes: []
     }
 ]);
+
+db.comments.insertMany([
+    {
+        author: 'Monina Carandang',
+        content: 'Ganda ng Moodal. Commended. Lalo na yung Backend WOOOOOOOOOOOOOOOOH',
+        timestamp: "01:30pm",
+        likeCount: 10
+    },
+    {
+        author: 'Joma Urbano',
+        content: 'A-8L',
+        timestamp: "01:30pm",
+        likeCount: 9999999
+    },
+    {
+        author: 'Kobe De Luna',
+        content: 'A-8L',
+        timestamp: "01:30pm",
+        likeCount: -9999999
+    },
+    {
+        author: 'Cedric Cerbo',
+        content: 'A-8L',
+        timestamp: "01:30pm",
+        likeCount: -9999999
+    },
+    {
+        author: 'Erika Nepomuceno',
+        content: 'A-8L',
+        timestamp: "01:30pm",
+        likeCount: -9999999
+    }
+]);
