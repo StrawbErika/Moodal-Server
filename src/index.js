@@ -2,7 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import logger from 'morgan';
 import mongoose from 'mongoose';
-
+import cors from 'cors';
 import router from './router';
 
 const app = express();
@@ -15,6 +15,8 @@ mongoose.connect(`mongodb://localhost/${db}`, err => {
 });
 
 mongoose.Promise = global.Promise;
+
+app.use(cors());
 
 // Middlewares
 app.use(bodyParser.json());
