@@ -2,39 +2,39 @@ import { Comment } from '../../database/Comment';
 
 export const viewAllComment = () => {
   return new Promise((resolve, reject) => {
-    Comment.find((err, commmentes) => {
+    Comment.find((err, comments) => {
       if (err) {
         console.log(err);
         return reject(500);
       }
-      return resolve(commmentes);
+      return resolve(comments);
     });
   });
 };
 
 export const viewCommentByID = _id => {
   return new Promise((resolve, reject) => {
-    Comment.findById(_id, (err, commment) => {
+    Comment.findById(_id, (err, comment) => {
       if (err) {
         console.log(err);
         return reject(500);
       }
-      return resolve(commment);
+      return resolve(comment);
     });
   });
 };
 
-export const createComment = commment => {
+export const createComment = comment => {
   return new Promise((resolve, reject) => {
-    const newComment = new Comment(commment);
+    const newComment = new Comment(comment);
 
-    newComment.save((err, commment) => {
+    newComment.save((err, comment) => {
       if (err) {
         console.log(err);
         return reject(500);
       }
 
-      return resolve(commment);
+      return resolve(comment);
     });
   });
 };
@@ -56,21 +56,21 @@ export const editComment = (
   { author, content, timestamp, likeCount, postId }
 ) => {
   return new Promise((resolve, reject) => {
-    Comment.findById(_id, (err, commment) => {
+    Comment.findById(_id, (err, comment) => {
       if (err) {
         console.log(err);
         return reject(500);
       }
-      if (!commment) {
+      if (!comment) {
         return reject(404);
       }
-      commment.author = author;
-      commment.content = content;
-      commment.timestamp = timestamp;
-      commment.likeCount = likeCount;
+      comment.author = author;
+      comment.content = content;
+      comment.timestamp = timestamp;
+      comment.likeCount = likeCount;
       comment.postId = postId;
 
-      commment.save((err, newComment) => {
+      comment.save((err, newComment) => {
         if (err) {
           console.log(err);
           return reject(500);

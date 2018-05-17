@@ -117,7 +117,6 @@ router.delete('/api/message/:_id', async (req, res) => {
 router.put('/api/message/:_id', async (req, res) => {
   if (
     req.params._id &&
-    req.body.userId &&
     req.body.sender &&
     req.body.recipient &&
     req.body.content &&

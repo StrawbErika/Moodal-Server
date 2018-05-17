@@ -53,7 +53,7 @@ db.users.insertMany([
 
 db.classes.insertMany([
     {
-        _id: 'class1',
+        id: 'class1',
         title: 'CMSC 128',
         section: 'A-8L',
         posts: ['post1', 'post2', 'post3'],

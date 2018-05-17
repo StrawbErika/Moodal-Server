@@ -53,7 +53,7 @@ export const deleteClass = _id => {
 
 export const editClass = (
   _id,
-  { classId, title, section, posts, students, canPost, canComment, teachers }
+  { title, section, posts, students, canPost, canComment, teachers }
 ) => {
   return new Promise((resolve, reject) => {
     Class.findById(_id, (err, _class) => {
@@ -65,7 +65,6 @@ export const editClass = (
         return reject(404);
       }
 
-      _class.classId = classId;
       _class.title = title;
       _class.section = section;
       _class.posts = posts;
