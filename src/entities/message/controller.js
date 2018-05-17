@@ -1,8 +1,8 @@
 import { Message } from '../../database/Message';
 
-export const viewAllMessage = userId => {
+export const viewAllMessage = () => {
   return new Promise((resolve, reject) => {
-    Message.find(userId, (err, messages) => {
+    Message.find((err, messages) => {
       if (err) {
         console.log(err);
         return reject(500);
@@ -51,7 +51,10 @@ export const deleteMessage = _id => {
   });
 };
 
-export const editMessage = (_id, { sender, recipient, content, timestamp }) => {
+export const editMessage = (
+  _id,
+  { sender, recipient, content, timestamp, title, isRead }
+) => {
   return new Promise((resolve, reject) => {
     Message.findById(_id, (err, message) => {
       if (err) {
@@ -61,10 +64,13 @@ export const editMessage = (_id, { sender, recipient, content, timestamp }) => {
       if (!message) {
         return reject(404);
       }
+
       message.sender = sender;
       message.recipient = recipient;
       message.content = content;
       message.timestamp = timestamp;
+      message.title = title;
+      message.isRead = isRead;
 
       message.save((err, newMessage) => {
         if (err) {

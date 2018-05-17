@@ -1,8 +1,7 @@
 import mongoose, { Schema } from 'mongoose';
 
 const MessageSchema = new Schema({
-  userId: { type: String, required: true },
-  sender: { type: String, required: true },
+  sender: { type: String, required: true }, // contains the uuid of the sender (user)
   recipient: { type: String, required: true },
   title: { type: String, required: true },
   content: { type: String, required: true },

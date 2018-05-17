@@ -53,7 +53,7 @@ export const deleteClass = _id => {
 
 export const editClass = (
   _id,
-  { title, section, posts, students, canPost, canComment, teachers }
+  { classId, title, section, posts, students, canPost, canComment, teachers }
 ) => {
   return new Promise((resolve, reject) => {
     Class.findById(_id, (err, _class) => {
@@ -64,6 +64,8 @@ export const editClass = (
       if (!_class) {
         return reject(404);
       }
+
+      _class.classId = classId;
       _class.title = title;
       _class.section = section;
       _class.posts = posts;
@@ -71,6 +73,7 @@ export const editClass = (
       _class.canPost = canPost;
       _class.canComment = canComment;
       _class.teachers = teachers;
+
       _class.save((err, newClass) => {
         if (err) {
           console.log(err);
