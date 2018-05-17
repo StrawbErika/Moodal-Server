@@ -16,7 +16,7 @@ export const viewAllMessage = () => {
 export const viewAllMessagesByUserId = ({ sender, recipient }) => {
   return new Promise((resolve, reject) => {
     Message.find(
-      { $or: [{ userId: sender._id }, (userId: recipient._id)] },
+      { $or: [{ userId: sender._id }, { userId: recipient._id }] },
       (err, messages) => {
         if (err) {
           console.log(err);
