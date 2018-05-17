@@ -1,6 +1,7 @@
 import mongoose, { Schema } from 'mongoose';
 
 const ClassSchema = new Schema({
+  classId: { type: String, required: true },
   title: { type: String, required: true },
   section: { type: String, required: true },
   posts: { type: Array, required: true },

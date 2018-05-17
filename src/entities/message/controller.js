@@ -1,4 +1,5 @@
 import { Message } from '../../database/Message';
+import { $for } from 'core-js/library/web/timers';
 
 export const viewAllMessage = () => {
   return new Promise((resolve, reject) => {
@@ -9,6 +10,21 @@ export const viewAllMessage = () => {
       }
       return resolve(messages);
     });
+  });
+};
+
+export const viewAllMessagesByUserId = ({ sender, recipient }) => {
+  return new Promise((resolve, reject) => {
+    Message.find(
+      { $or: [{ userId: sender._id }, (userId: recipient._id)] },
+      (err, messages) => {
+        if (err) {
+          console.log(err);
+          return reject(500);
+        }
+        return resolve(messages);
+      }
+    );
   });
 };
 
@@ -67,9 +83,9 @@ export const editMessage = (
 
       message.sender = sender;
       message.recipient = recipient;
+      message.title = title;
       message.content = content;
       message.timestamp = timestamp;
-      message.title = title;
       message.isRead = isRead;
 
       message.save((err, newMessage) => {

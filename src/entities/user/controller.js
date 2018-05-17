@@ -12,8 +12,7 @@ export const viewAllUser = () => {
   });
 };
 
-export const viewAllStudentsByClassId = _class => {
-  const { classId } = _class;
+export const viewAllStudentsByClassId = ({ classId }) => {
   return new Promise((resolve, reject) => {
     User.find({ classId, userType: 'student' }, (err, students) => {
       if (err) {
@@ -25,8 +24,7 @@ export const viewAllStudentsByClassId = _class => {
   });
 };
 
-export const viewAllTeachersByClassId = _class => {
-  const { classId } = _class;
+export const viewAllTeachersByClassId = ({ classId }) => {
   return new Promise((resolve, reject) => {
     User.find({ classId, userType: 'teacher' }, (err, teachers) => {
       if (err) {

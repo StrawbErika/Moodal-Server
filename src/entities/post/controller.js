@@ -1,13 +1,25 @@
 import { Post } from '../../database/Post';
 
-export const viewAllPost = () => {
+// export const viewAllPost = () => {
+//   return new Promise((resolve, reject) => {
+//     Post.find((err, posts) => {
+//       if (err) {
+//         console.log(err);
+//         return reject(500);
+//       }
+//       return resolve(posts);
+//     });
+//   });
+// };
+
+export const viewAllPostsByClassId = ({ classId }) => {
   return new Promise((resolve, reject) => {
-    Post.find((err, postes) => {
+    Post.find({ classId }, (err, posts) => {
       if (err) {
         console.log(err);
         return reject(500);
       }
-      return resolve(postes);
+      return resolve(posts);
     });
   });
 };

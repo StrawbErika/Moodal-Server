@@ -53,7 +53,7 @@ export const deleteComment = _id => {
 
 export const editComment = (
   _id,
-  { author, content, timestamp, likeCount, classes }
+  { author, content, timestamp, likeCount, postId }
 ) => {
   return new Promise((resolve, reject) => {
     Comment.findById(_id, (err, commment) => {
@@ -68,6 +68,7 @@ export const editComment = (
       commment.content = content;
       commment.timestamp = timestamp;
       commment.likeCount = likeCount;
+      comment.postId = postId;
 
       commment.save((err, newComment) => {
         if (err) {

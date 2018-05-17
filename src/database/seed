@@ -6,228 +6,211 @@ db.messages.drop();
 db.posts.drop();
 db.users.drop();
 
-db.classes.insertMany([
-    {
-        title: 'CMSC 128',
-        section: 'A-8L',
-        posts: [],
-        students: [],
-        canComment: true,
-        canPost: false
-    },
-    {
-        title: 'CMSC 132',
-        section: 'ST-4L',
-        posts: [],
-        students: [],
-        canComment: true,
-        canPost: false
-    },
-    {
-        title: 'CMSC 170',
-        section: 'U-9L',
-        posts: [],
-        students: [],
-        canComment: true,
-        canPost: false
-    },
-    {
-        title: 'CMSC 100',
-        section: 'UV-1L',
-        posts: [],
-        students: [],
-        canComment: true,
-        canPost: false
-    }
-]);
 
 db.users.insertMany([
     {
+        _id: 'teacher1',
         email: 'mcarandang@up.edu.ph',
         name: 'Monina Carandang',
         password: '123123',
         userType: 'teacher',
-        classes: []
+        classes: ['class1', 'class2']
     },
     {
+        _id: 'teacher2',
         email: 'jomapogi@up.edu.ph',
         name: 'Joma Urbano',
-        password: 'pogisijoma',
+        password: 'cykablyat',
         userType: 'student',
-        classes: []
+        classes: ['class1']
     },
 
     {
+        _id: 'student1',
         email: 'kjdeluna@up.edu.ph',
         name: 'Kobe De Luna',
         password: 'pangetako',
         userType: 'student',
-        classes: []
+        classes: ['class1']
     },
     {
+        _id: 'student2',
         email: 'jcgaza@up.edu.ph',
         name: 'Cedric Cerbo',
         password: 'pangetako',
         userType: 'student',
-        classes: []
+        classes: ['class2']
     },
     {
+        _id: 'student3',
         email: 'elnepomuceno@up.edu.ph',
         name: 'Erika Nepomuceno',
         password: 'pangetako',
         userType: 'student',
-        classes: []
+        classes: ['class3']
+    }
+]);
+
+db.classes.insertMany([
+    {
+        _id: 'class1',
+        title: 'CMSC 128',
+        section: 'A-8L',
+        posts: ['post1', 'post2', 'post3'],
+        students: ['student1', 'student2', 'student3'],
+        canComment: true,
+        canPost: false,
+        teachers: ['teacher1', 'teacher2']
+    },
+    {
+        _id: 'class2',
+        title: 'CMSC 132',
+        section: 'ST-4L',
+        posts: ['post1', 'post2'],
+        students: ['student1', 'student2'],
+        canComment: true,
+        canPost: false,
+        teachers: ['teacher1']
+    },
+    {
+        _id: 'class3',
+        title: 'CMSC 170',
+        section: 'U-9L',
+        posts: [],
+        students: ['student1'],
+        canComment: true,
+        canPost: false,
+        teachers: ['teacher2']
+    },
+    {
+        title: 'CMSC 100',
+        _id: 'class4',
+        section: 'UV-1L',
+        posts: [],
+        students: ['student2'],
+        canComment: true,
+        canPost: false,
+        teachers: ['teacher2']
     }
 ]);
 
 db.comments.insertMany([
     {
+        _id: 'comment1',
         author: 'Monina Carandang',
         content: 'Ganda ng Moodal. Commended. Lalo na yung Backend WOOOOOOOOOOOOOOOOH',
         timestamp: "01:30pm",
-        likeCount: 10
+        likeCount: 10,
+        postId: 'post1'
     },
     {
+        _id: 'comment2',
         author: 'Joma Urbano',
         content: 'A-8L',
         timestamp: "01:30pm",
-        likeCount: 9999999
+        likeCount: 5,
+        postId: 'post1'
     },
     {
+        _id: 'comment3',
         author: 'Kobe De Luna',
         content: 'A-8L',
         timestamp: "01:30pm",
-        likeCount: -9999999
+        likeCount: 100,
+        postId: 'post1'
     },
     {
+        _id: 'comment4',
         author: 'Cedric Cerbo',
         content: 'A-8L',
         timestamp: "01:30pm",
-        likeCount: -9999999
+        likeCount: 109,
+        postId: 'post2'
     },
     {
+        _id: 'comment5',
         author: 'Erika Nepomuceno',
         content: 'A-8L',
         timestamp: "01:30pm",
-        likeCount: -9999999
+        likeCount: 120,
+        postId: 'post2'
     }
 ]);
 
 db.messages.insertMany([
     {
-        sender: 'Monina Carandang',
-        recipient: 'Joma Urbano',
+        sender: 'teacher1',
+        recipient: 'student1',
+        title: 'Weewoo',
         content: "Galing ng Backend. Lalo ka na Joma. Good job!",
-        timestamp: "01:30pm"
+        timestamp: "01:30pm",
+        isRead: true
     },
     {
-        sender: 'Monina Carandang',
-        recipient: 'Kobe De Luna',
+        sender: 'teacher2',
+        recipient: 'student1',
+        title: 'Wooooweeeee',
         content: "Galing ng Backend. Lalo ka na Kobe pero mas magaling si Joma hehehehehehe. Good job!",
-        timestamp: "01:30pm"
+        timestamp: "01:30pm",
+        isRead: false
     },
     {
-        sender: 'Monina Carandang',
-        recipient: 'Cedric Gaza',
+        sender: 'student1',
+        recipient: 'student2',
+        title: 'Waaaaaaaaaaaaa',
         content: "Boooooo Frontend!",
-        timestamp: "01:30pm"
+        timestamp: "01:30pm",
+        isRead: true
     },
     {
-        sender: 'Monina Carandang',
-        recipient: 'Erika Nepomuceno',
+        sender: 'student2',
+        recipient: 'student3',
+        title: 'HEIL MEIN FUHRER',
         content: "Boooooo Frontend!",
-        timestamp: "01:30pm"
-    },
-    {
-        sender: 'Joma Urbano',
-        recipient: 'Kobe De Luna',
-        content: "pogi q hehehehehehehehe",
-        timestamp: "01:30pm"
-    },
-    {
-        sender: 'Joma Urbano',
-        recipient: 'Erika Nepomuceno',
-        content: "pogi q hehehehehehehehe",
-        timestamp: "01:30pm"
-    },
-    {
-        sender: 'Joma Urbano',
-        recipient: 'Cedric Gaza',
-        content: "pogi q hehehehehehehehe",
-        timestamp: "01:30pm"
-    },
-    {
-        sender: 'Joma Urbano',
-        recipient: 'Erika Nepomuceno',
-        content: "pogi q hehehehehehehehe",
-        timestamp: "01:30pm"
-    },
-    {
-        sender: 'Joma Urbano',
-        recipient: 'Monina Carandang',
-        content: "pogi q hehehehehehehehe",
-        timestamp: "01:30pm"
-    },
-    {
-        sender: 'Kobe De Luna',
-        recipient: 'Joma Urbano',
-        content: "pogi mo Joma, dabest",
-        timestamp: "01:30pm"
-    },
-    {
-        sender: 'Kobe De Luna',
-        recipient: 'Erika Nepomuceno',
-        content: "super pogi ni Joma hehehehehe",
-        timestamp: "01:30pm"
-    },
-    {
-        sender: 'Kobe De Luna',
-        recipient: 'Cedric Gaza',
-        content: "super pogi ni Joma hehehehehe",
-        timestamp: "01:30pm"
-    },
-    {
-        sender: 'Kobe De Luna',
-        recipient: 'Monina Carandang',
-        content: "super pogi ni Joma hehehehehe",
-        timestamp: "01:30pm"
+        timestamp: "01:30pm",
+        isRead: true
     }
 ]);
 
 db.posts.insertMany([
     {
+        _id: 'post1',
         author: 'Joma Urbano',
         content: "super pogi ko hehehehehe",
         timestamp: "01:30pm",
         comments: [],
-        classId: "CMSC 100"
+        classId: 'class1'
     },
     {
+        _id: 'post2',
         author: 'Kobe De Luna',
         content: "super pogi ni Joma hehehehehe",
         timestamp: "01:30pm",
         comments: [],
-        classId: "CMSC 100"
+        classId: 'class1'
     },
     {
+        _id: 'post3',
         author: 'Monina Carandang',
         content: "super pogi ni Joma hehehehehe",
         timestamp: "01:30pm",
         comments: [],
-        classId: "CMSC 100"
+        classId: 'class2'
     },
     {
+        _id: 'post4',
         author: 'Cedric Gaza',
         content: "super pogi ni Joma hehehehehe",
         timestamp: "01:30pm",
         comments: [],
-        classId: "CMSC 100"
+        classId: 'class2'
     },
     {
+        _id: 'post5',
         author: 'Erika Nepomuceno',
         content: "super pogi ni Joma hehehehehe",
         timestamp: "01:30pm",
         comments: [],
-        classId: "CMSC 100"
+        classId: 'class1'
     }
 ]);

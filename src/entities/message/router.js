@@ -4,9 +4,31 @@ import * as Ctrl from './controller';
 const router = Router();
 
 //Gets all message
+// router.get('/api/message', async (req, res) => {
+//   try {
+//     const messages = await Ctrl.viewAllMessage(req.body);
+//     res.status(200).json({
+//       status: 200,
+//       message: 'Successfully fetched all messages',
+//       data: messages
+//     });
+//   } catch (status) {
+//     let message = '';
+//     switch (status) {
+//       case 404:
+//         message = 'Message not found';
+//         break;
+//       case 500:
+//         message = 'Internal server error';
+//         break;
+//     }
+//     res.status(status).json({ status, message });
+//   }
+// });
+
 router.get('/api/message', async (req, res) => {
   try {
-    const messages = await Ctrl.viewAllMessage(req.body);
+    const messages = await Ctrl.viewAllMessagesByUserId(req.body);
     res.status(200).json({
       status: 200,
       message: 'Successfully fetched all messages',

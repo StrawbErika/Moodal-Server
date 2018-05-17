@@ -94,7 +94,8 @@ router.put('/api/comment/:_id', async (req, res) => {
     req.body.author &&
     req.body.content &&
     req.body.timestamp &&
-    req.body.likeCount
+    req.body.likeCount &&
+    req.body.postId
   ) {
     try {
       await Ctrl.editComment(req.params, req.body);
