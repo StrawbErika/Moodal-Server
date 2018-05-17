@@ -2,12 +2,38 @@ import { User } from '../../database/User';
 
 export const viewAllUser = () => {
   return new Promise((resolve, reject) => {
-    User.find((err, useres) => {
+    User.find((err, users) => {
       if (err) {
         console.log(err);
         return reject(500);
       }
-      return resolve(useres);
+      return resolve(users);
+    });
+  });
+};
+
+export const viewAllStudentsByClassId = _class => {
+  const { classId } = _class;
+  return new Promise((resolve, reject) => {
+    User.find({ classId, userType: 'student' }, (err, students) => {
+      if (err) {
+        console.log(err);
+        return reject(500);
+      }
+      return resolve(students);
+    });
+  });
+};
+
+export const viewAllTeachersByClassId = _class => {
+  const { classId } = _class;
+  return new Promise((resolve, reject) => {
+    User.find({ classId, userType: 'teacher' }, (err, teachers) => {
+      if (err) {
+        console.log(err);
+        return reject(500);
+      }
+      return resolve(teachers);
     });
   });
 };

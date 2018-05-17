@@ -16,7 +16,7 @@ router.get('/api/user', async (req, res) => {
     let message = '';
     switch (status) {
       case 404:
-        message = 'User not found';
+        message = 'Users not found';
         break;
       case 500:
         message = 'Internal server error';
@@ -40,6 +40,52 @@ router.get('/api/user/:_id', async (req, res) => {
     switch (status) {
       case 404:
         message = 'User not found';
+        break;
+      case 500:
+        message = 'Internal server error';
+        break;
+    }
+    res.status(status).json({ status, message });
+  }
+});
+
+// Gets students by classId
+router.get('/api/students', async (req, res) => {
+  try {
+    const students = await Ctrl.viewAllStudentsByClassId(req.body);
+    res.status(200).json({
+      status: 200,
+      message: 'Successfully fetched all students',
+      data: students
+    });
+  } catch (status) {
+    let message = '';
+    switch (status) {
+      case 404:
+        message = 'Students not found';
+        break;
+      case 500:
+        message = 'Internal server error';
+        break;
+    }
+    res.status(status).json({ status, message });
+  }
+});
+
+// Gets students by classId
+router.get('/api/teachers', async (req, res) => {
+  try {
+    const teachers = await Ctrl.viewAllTeachersByClassId(req.body);
+    res.status(200).json({
+      status: 200,
+      message: 'Successfully fetched all teachers',
+      data: teachers
+    });
+  } catch (status) {
+    let message = '';
+    switch (status) {
+      case 404:
+        message = 'Teachers not found';
         break;
       case 500:
         message = 'Internal server error';

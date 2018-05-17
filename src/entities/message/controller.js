@@ -1,13 +1,13 @@
 import { Message } from '../../database/Message';
 
-export const viewAllMessage = () => {
+export const viewAllMessage = userId => {
   return new Promise((resolve, reject) => {
-    Message.find((err, messagees) => {
+    Message.find(userId, (err, messages) => {
       if (err) {
         console.log(err);
         return reject(500);
       }
-      return resolve(messagees);
+      return resolve(messages);
     });
   });
 };

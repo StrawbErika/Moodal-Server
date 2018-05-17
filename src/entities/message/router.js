@@ -52,10 +52,13 @@ router.get('/api/message/:_id', async (req, res) => {
 //Adds a message
 router.post('/api/message', async (req, res) => {
   if (
+    req.body.userId &&
     req.body.sender &&
     req.body.recipient &&
     req.body.content &&
-    req.body.timestamp
+    req.body.timestamp &&
+    req.body.title &&
+    req.body.isRead
   ) {
     try {
       await Ctrl.createMessage(req.body);
@@ -92,10 +95,13 @@ router.delete('/api/message/:_id', async (req, res) => {
 router.put('/api/message/:_id', async (req, res) => {
   if (
     req.params._id &&
+    req.body.userId &&
     req.body.sender &&
     req.body.recipient &&
     req.body.content &&
-    req.body.timestamp
+    req.body.timestamp &&
+    req.body.title &&
+    req.body.isRead
   ) {
     try {
       await Ctrl.editMessage(req.params, req.body);
