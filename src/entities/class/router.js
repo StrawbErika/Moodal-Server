@@ -92,26 +92,15 @@ router.delete('/api/class/:_id', async (req, res) => {
 
 //Edits/Updates a class
 router.put('/api/class/:_id', async (req, res) => {
-  if (
-    req.params._id &&
-    req.body.title &&
-    req.body.section &&
-    req.body.students &&
-    req.body.posts &&
-    req.body.canComment &&
-    req.body.canPost
-  ) {
-    try {
-      await Ctrl.editClass(req.params, req.body);
-      res.status(200).json({
-        status: 200,
-        message: 'Successfully edited the class'
-      });
-    } catch (status) {
-      res.status(500).json({ status: 500, message: 'Internal server error' });
-    }
-  } else {
-    res.status(400).json({ status: 400, message: 'Bad request' });
+  // console.log(req.body, req.params);
+  try {
+    await Ctrl.editClass(req.params._id, req.body);
+    res.status(200).json({
+      status: 200,
+      message: 'Successfully edited the class'
+    });
+  } catch (status) {
+    res.status(500).json({ status: 500, message: 'Internal server error' });
   }
 });
 
