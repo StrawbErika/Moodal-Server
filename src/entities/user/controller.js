@@ -101,3 +101,7 @@ export const editUser = (_id, { email, name, password, userType, classes }) => {
     });
   });
 };
+
+export const getUserReferencesByClassId = async ({ teachers }) => {
+  return Promise.all(teachers.map(async _id => await User.findOne({ _id })));
+};

@@ -7,7 +7,7 @@ const ClassSchema = new Schema({
   students: { type: Array, required: true },
   canPost: { type: Boolean, required: true },
   canComment: { type: Boolean, required: true },
-  teachers: { type: Array, required: true }
+  teachers: [{ type: Schema.Types.ObjectId, ref: 'User' }]
 });
 
 export const Class = mongoose.model('Class', ClassSchema);
