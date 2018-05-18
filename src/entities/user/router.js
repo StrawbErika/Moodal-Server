@@ -159,26 +159,26 @@ router.delete('/api/user/:_id', async (req, res) => {
 
 //Edits/Updates a user
 router.put('/api/user/:_id', async (req, res) => {
-  if (
-    req.params._id &&
-    req.body.email &&
-    req.body.name &&
-    req.body.password &&
-    req.body.userType &&
-    req.body.classes
-  ) {
-    try {
-      await Ctrl.editUser(req.params, req.body);
-      res.status(200).json({
-        status: 200,
-        message: 'Successfully edited the user'
-      });
-    } catch (status) {
-      res.status(500).json({ status: 500, message: 'Internal server error' });
-    }
-  } else {
-    res.status(400).json({ status: 400, message: 'Bad request' });
+  // if (
+  //   req.params._id &&
+  //   req.body.email &&
+  //   req.body.name &&
+  //   req.body.password &&
+  //   req.body.userType &&
+  //   req.body.classes
+  // ) {
+  try {
+    await Ctrl.editUser(req.params, req.body);
+    res.status(200).json({
+      status: 200,
+      message: 'Successfully edited the user'
+    });
+  } catch (status) {
+    res.status(500).json({ status: 500, message: 'Internal server error' });
   }
+  // } else {
+  //   res.status(400).json({ status: 400, message: 'Bad request' });
+  // }
 });
 
 export default router;

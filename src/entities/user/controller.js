@@ -89,7 +89,7 @@ export const editUser = (_id, { email, name, password, userType, classes }) => {
       user.name = name;
       user.password = password;
       user.userType = userType;
-      user.classes = classes;
+      user.classes = [...classes, ...user.classes];
 
       user.save((err, newUser) => {
         if (err) {

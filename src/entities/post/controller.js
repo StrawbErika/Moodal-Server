@@ -13,14 +13,23 @@ import { Post } from '../../database/Post';
 // };
 
 export const viewAllPostsByClassId = ({ classId }) => {
-  return new Promise((resolve, reject) => {
-    Post.find({ classId }, (err, posts) => {
-      if (err) {
-        console.log(err);
-        return reject(500);
-      }
+  // return new Promise((resolve, reject) => {
+  //   Post.find({ classId }, (err, posts) => {
+  //     if (err) {
+  //       console.log(err);
+  //       return reject(500);
+  //     }
+  //     return resolve(posts);
+  //   });
+  // });
+  return new Promise(async (resolve, reject) => {
+    try {
+      const posts = await Post.find({ classId }).populate('comments');
+
       return resolve(posts);
-    });
+    } catch (err) {
+      return reject(500);
+    }
   });
 };
 
