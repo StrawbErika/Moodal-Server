@@ -69,7 +69,7 @@ db.classes.insertMany([
         title: 'CMSC 170',
         section: 'U-9L',
         posts: [],
-        students: ['student1'],
+        students: ['student1', 'student1', 'student1', 'student1'],
         canComment: true,
         canPost: false,
         teachers: ['teacher2']
