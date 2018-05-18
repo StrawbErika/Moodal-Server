@@ -9,7 +9,6 @@ db.users.drop();
 
 db.users.insertMany([
     {
-        _id: 'teacher1',
         email: 'mcarandang@up.edu.ph',
         name: 'Monina Carandang',
         password: '123123',
@@ -17,7 +16,6 @@ db.users.insertMany([
         classes: ['class1', 'class2']
     },
     {
-        _id: 'teacher2',
         email: 'jomapogi@up.edu.ph',
         name: 'Joma Urbano',
         password: 'cykablyat',
@@ -26,7 +24,6 @@ db.users.insertMany([
     },
 
     {
-        _id: 'student1',
         email: 'kjdeluna@up.edu.ph',
         name: 'Kobe De Luna',
         password: 'pangetako',
@@ -34,7 +31,6 @@ db.users.insertMany([
         classes: ['class1']
     },
     {
-        _id: 'student2',
         email: 'jcgaza@up.edu.ph',
         name: 'Cedric Cerbo',
         password: 'pangetako',
@@ -42,7 +38,6 @@ db.users.insertMany([
         classes: ['class2']
     },
     {
-        _id: 'student3',
         email: 'elnepomuceno@up.edu.ph',
         name: 'Erika Nepomuceno',
         password: 'pangetako',
@@ -53,7 +48,6 @@ db.users.insertMany([
 
 db.classes.insertMany([
     {
-        id: 'class1',
         title: 'CMSC 128',
         section: 'A-8L',
         posts: ['post1', 'post2', 'post3'],
@@ -63,7 +57,6 @@ db.classes.insertMany([
         teachers: ['teacher1', 'teacher2']
     },
     {
-        _id: 'class2',
         title: 'CMSC 132',
         section: 'ST-4L',
         posts: ['post1', 'post2'],
@@ -73,7 +66,6 @@ db.classes.insertMany([
         teachers: ['teacher1']
     },
     {
-        _id: 'class3',
         title: 'CMSC 170',
         section: 'U-9L',
         posts: [],
@@ -84,7 +76,6 @@ db.classes.insertMany([
     },
     {
         title: 'CMSC 100',
-        _id: 'class4',
         section: 'UV-1L',
         posts: [],
         students: ['student2'],
@@ -96,7 +87,6 @@ db.classes.insertMany([
 
 db.comments.insertMany([
     {
-        _id: 'comment1',
         author: 'Monina Carandang',
         content: 'Ganda ng Moodal. Commended. Lalo na yung Backend WOOOOOOOOOOOOOOOOH',
         timestamp: "01:30pm",
@@ -104,7 +94,6 @@ db.comments.insertMany([
         postId: 'post1'
     },
     {
-        _id: 'comment2',
         author: 'Joma Urbano',
         content: 'A-8L',
         timestamp: "01:30pm",
@@ -112,7 +101,6 @@ db.comments.insertMany([
         postId: 'post1'
     },
     {
-        _id: 'comment3',
         author: 'Kobe De Luna',
         content: 'A-8L',
         timestamp: "01:30pm",
@@ -120,7 +108,6 @@ db.comments.insertMany([
         postId: 'post1'
     },
     {
-        _id: 'comment4',
         author: 'Cedric Cerbo',
         content: 'A-8L',
         timestamp: "01:30pm",
@@ -128,7 +115,6 @@ db.comments.insertMany([
         postId: 'post2'
     },
     {
-        _id: 'comment5',
         author: 'Erika Nepomuceno',
         content: 'A-8L',
         timestamp: "01:30pm",
@@ -174,7 +160,6 @@ db.messages.insertMany([
 
 db.posts.insertMany([
     {
-        _id: 'post1',
         author: 'Joma Urbano',
         content: "super pogi ko hehehehehe",
         timestamp: "01:30pm",
@@ -182,7 +167,6 @@ db.posts.insertMany([
         classId: 'class1'
     },
     {
-        _id: 'post2',
         author: 'Kobe De Luna',
         content: "super pogi ni Joma hehehehehe",
         timestamp: "01:30pm",
@@ -190,7 +174,6 @@ db.posts.insertMany([
         classId: 'class1'
     },
     {
-        _id: 'post3',
         author: 'Monina Carandang',
         content: "super pogi ni Joma hehehehehe",
         timestamp: "01:30pm",
@@ -198,7 +181,6 @@ db.posts.insertMany([
         classId: 'class2'
     },
     {
-        _id: 'post4',
         author: 'Cedric Gaza',
         content: "super pogi ni Joma hehehehehe",
         timestamp: "01:30pm",
@@ -206,7 +188,6 @@ db.posts.insertMany([
         classId: 'class2'
     },
     {
-        _id: 'post5',
         author: 'Erika Nepomuceno',
         content: "super pogi ni Joma hehehehehe",
         timestamp: "01:30pm",

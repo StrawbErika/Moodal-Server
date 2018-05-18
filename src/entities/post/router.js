@@ -4,9 +4,9 @@ import * as Ctrl from './controller';
 const router = Router();
 
 //Gets all post
-router.get('/api/post', async (req, res) => {
+router.get('/api/post/:classId', async (req, res) => {
   try {
-    const posts = await Ctrl.viewAllPostsByClassId(req.body);
+    const posts = await Ctrl.viewAllPostsByClassId(req.params);
     res.status(200).json({
       status: 200,
       message: 'Successfully fetched all posts',
@@ -27,7 +27,7 @@ router.get('/api/post', async (req, res) => {
 });
 
 //Gets post by id
-router.get('/api/post/:_id', async (req, res) => {
+router.get('/api/post/:_idsss', async (req, res) => {
   try {
     const posts = await Ctrl.viewPostByID(req.params);
     res.status(200).json({
@@ -51,24 +51,14 @@ router.get('/api/post/:_id', async (req, res) => {
 
 //Adds a post
 router.post('/api/post', async (req, res) => {
-  if (
-    req.body.author &&
-    req.body.content &&
-    req.body.timestamp &&
-    req.body.comments &&
-    req.body.classId
-  ) {
-    try {
-      await Ctrl.createPost(req.body);
-      res.status(200).json({
-        status: 200,
-        message: 'Successfully created post'
-      });
-    } catch (status) {
-      res.status(500).json({ status: 500, message: 'Internal server error' });
-    }
-  } else {
-    res.status(400).json({ status: 400, message: 'Bad request' });
+  try {
+    await Ctrl.createPost(req.body);
+    res.status(200).json({
+      status: 200,
+      message: 'Successfully created post'
+    });
+  } catch (status) {
+    res.status(500).json({ status: 500, message: 'Internal server error' });
   }
 });
 
