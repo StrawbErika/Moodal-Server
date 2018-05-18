@@ -74,7 +74,6 @@ router.get('/api/message/:_id', async (req, res) => {
 //Adds a message
 router.post('/api/message', async (req, res) => {
   if (
-    req.body.userId &&
     req.body.sender &&
     req.body.recipient &&
     req.body.content &&

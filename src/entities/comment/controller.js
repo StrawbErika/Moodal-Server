@@ -2,7 +2,7 @@ import { Comment } from '../../database/Comment';
 
 export const viewAllComment = () => {
   return new Promise((resolve, reject) => {
-    Comment.find((err, comments) => {
+    Comment.find({}, (err, comments) => {
       if (err) {
         console.log(err);
         return reject(500);

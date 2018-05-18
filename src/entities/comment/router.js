@@ -5,7 +5,7 @@ const router = Router();
 //Gets all comment
 router.get('/api/comment', async (req, res) => {
   try {
-    const comments = await Ctrl.viewAllComment(req.body);
+    const comments = await Ctrl.viewAllComment();
     res.status(200).json({
       status: 200,
       message: 'Successfully fetched all comments',
@@ -50,23 +50,14 @@ router.get('/api/comment/:_id', async (req, res) => {
 
 //Adds a comment
 router.post('/api/comment', async (req, res) => {
-  if (
-    req.body.author &&
-    req.body.content &&
-    req.body.timestamp &&
-    req.body.likeCount
-  ) {
-    try {
-      await Ctrl.createComment(req.body);
-      res.status(200).json({
-        status: 200,
-        message: 'Successfully created comment'
-      });
-    } catch (status) {
-      res.status(500).json({ status: 500, message: 'Internal server error' });
-    }
-  } else {
-    res.status(400).json({ status: 400, message: 'Bad request' });
+  try {
+    await Ctrl.createComment(req.body);
+    res.status(200).json({
+      status: 200,
+      message: 'Successfully created comment'
+    });
+  } catch (status) {
+    res.status(500).json({ status: 500, message: 'Internal server error' });
   }
 });
 
